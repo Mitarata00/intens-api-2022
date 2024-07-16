@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: praksa-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: praksa
+  template:
+    metadata:
+      labels:
+        app: praksa
+    spec:
+      containers:
+        - name: app-container
+          image: mitarata/praksa.jar:latest
+          env:
+          - name: PORT
+            value: "8080"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      
